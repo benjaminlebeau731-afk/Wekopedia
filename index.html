@@ -1,64 +1,331 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Wekopedia – Wesely</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
-  /* Basic reset & typography */
-  *{margin:0;padding:0;box-sizing:border-box;}
-  body{font-family:"Segoe UI","Roboto",Arial,sans-serif;line-height:1.6;background:#fafafa;color:#333;padding:2rem;}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wesley - Wekopedia, the free encyclopedia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Linux+Libertine:wght@400;700&family=Sans+Serif&display=swap');
+        
+        body {
+            font-family: sans-serif;
+            background-color: #f6f6f6;
+            color: #202122;
+        }
+        
+        h1, h2, h3, .wiki-heading {
+            font-family: 'Linux Libertine', Georgia, serif;
+            font-weight: normal;
+        }
 
-  /* Page layout */
-  .container{max-width:800px;margin:auto;background:#fff;padding:2rem;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.1);}
-  h1{font-size:2.5rem;margin-bottom:.5rem;color:#1a73e8;}
-  h2{font-size:1.75rem;margin-top:1.75rem;margin-bottom:.5rem;color:#555;}
+        h1 {
+            border-bottom: 1px solid #a2a9b1;
+            padding-bottom: 0.25em;
+            margin-bottom: 0.25em;
+            font-size: 1.8em;
+        }
 
-  /* Nickname list styling */
-  .nicknames ul{list-style:disc inside;margin-left:1.5rem;}
+        h2 {
+            border-bottom: 1px solid #a2a9b1;
+            padding-bottom: 0.25em;
+            margin-top: 1.5em;
+            margin-bottom: 0.25em;
+            font-size: 1.5em;
+        }
 
-  /* Anger button */
-  button{background:#1a73e8;color:#fff;border:none;border-radius:4px;padding:.5rem 1rem;cursor:pointer;font-size:1rem;}
-  button:hover{background:#155cb5;}
-  .anger-info{margin-top:1rem;display:none;color:#d32f2f;}
-</style>
+        .wiki-content p {
+            font-size: 0.875rem;
+            line-height: 1.6;
+            margin-bottom: 1em;
+        }
+
+        .wiki-link {
+            color: #0645ad;
+            text-decoration: none;
+        }
+        
+        .wiki-link:hover {
+            text-decoration: underline;
+        }
+
+        .infobox {
+            border: 1px solid #a2a9b1;
+            background-color: #f8f9fa;
+            padding: 0.5rem;
+            font-size: 0.85em;
+            float: right;
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+            width: 300px;
+            border-spacing: 3px;
+        }
+        
+        .infobox th {
+            text-align: left;
+            vertical-align: top;
+            padding: 0.2em;
+        }
+        
+        .infobox td {
+            vertical-align: top;
+            padding: 0.2em;
+        }
+
+        .toc {
+            border: 1px solid #a2a9b1;
+            background-color: #f8f9fa;
+            padding: 1rem;
+            display: inline-block;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.875rem;
+        }
+
+        .toc-title {
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 0.5em;
+        }
+
+        .toc ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .toc ul ul {
+            padding-left: 1.5em;
+        }
+        
+        .tabs {
+            display: flex;
+            gap: 2px;
+            margin-bottom: -1px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .tab {
+            padding: 8px 12px;
+            background: #f6f6f6;
+            border: 1px solid transparent;
+            border-bottom: none;
+            font-size: 0.875rem;
+            color: #0645ad;
+            cursor: pointer;
+        }
+
+        .tab.active {
+            background: #fff;
+            border-color: #a2a9b1;
+            color: #202122;
+            font-weight: bold;
+        }
+    </style>
 </head>
-<body>
-<div class="container">
-  <h1>Wekopedia – Wesely</h1>
-  <p>
-    <strong>Wesely</strong> is an extraordinary character known for his astonishing speed and ferocity when emotionally upset.  In the realm of Wekopedia, he is portrayed as a semi‑mythical figure who balances intellect and raw power.  
-    When Wesely gets angry, <em>his velocity escalates beyond ordinary limits—approaching the speed of sound (≈ 343 m/s in air).</em>  At such velocity he can crush obstacles and strike foes with a force capable of instant incapacitation, making him a feared opponent in any confrontation.
-  </p>
+<body class="flex flex-col min-h-screen">
 
-  <h2>Nicknames</h2>
-  <div class="nicknames">
-    <ul>
-      <li>Wesselsprout</li>
-      <li>Weko Nut</li>
-      <li>Wekle</li>
-      <li>Wekopedia</li>
-      <li>Wetard</li>
-      <li>Wesley</li>
-    </ul>
-  </div>
+    <!-- Top Navigation -->
+    <header class="bg-white border-b border-gray-300 py-2 px-4 flex justify-between items-center sticky top-0 z-10">
+        <div class="flex items-center gap-4">
+            <!-- Hamburger Menu (Mobile) -->
+            <button class="md:hidden text-gray-600 hover:text-black">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+            <div class="font-serif text-xl flex items-center gap-2">
+                <!-- Wekopedia Logo -->
+                <svg width="30" height="30" viewBox="0 0 100 100" class="inline-block">
+                    <circle cx="50" cy="50" r="45" fill="#fff" stroke="#333" stroke-width="5"/>
+                    <text x="50" y="65" font-family="serif" font-size="40" text-anchor="middle" font-style="italic">W</text>
+                </svg>
+                <span class="hidden sm:inline font-bold">Wekopedia</span>
+            </div>
+        </div>
+        <div class="flex-1 max-w-xl px-4 hidden sm:block">
+            <div class="relative">
+                <input type="text" placeholder="Search Wekopedia" class="w-full border border-gray-300 rounded-sm py-1.5 px-3 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-sm">
+                <button class="absolute right-2 top-2 text-gray-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div class="flex items-center gap-4 text-sm">
+            <a href="#" class="wiki-link hidden md:inline">Create account</a>
+            <a href="#" class="wiki-link hidden md:inline">Log in</a>
+            <button class="text-gray-600 hover:text-black">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+            </button>
+        </div>
+    </header>
 
-  <h2>Wesely in Action</h2>
-  <p>
-    Curious about how Wesely behaves when his temper ignites?  Click the button below to witness his angular velocity in motion.  (For a demonstration, we’re using a simple animation to illustrate the concept—no actual harm involved!)
-  </p>
-  <button id="angryBtn">Show Angry Speed</button>
-  <div class="anger-info" id="angerInfo">
-    🏃‍♂️⚡ Wesely is now moving at 343 m/s – the speed of sound!  A true sonic beast.
-  </div>
-</div>
+    <div class="flex flex-1 max-w-[1600px] w-full mx-auto">
+        <!-- Sidebar Navigation -->
+        <aside class="w-48 p-4 hidden md:block border-r border-gray-300 bg-[#f6f6f6]">
+            <nav class="space-y-6 text-sm text-[#0645ad]">
+                <div>
+                    <ul class="space-y-1.5">
+                        <li><a href="#" class="hover:underline">Main page</a></li>
+                        <li><a href="#" class="hover:underline">Contents</a></li>
+                        <li><a href="#" class="hover:underline">Current events</a></li>
+                        <li><a href="#" class="hover:underline">Random article</a></li>
+                        <li><a href="#" class="hover:underline">About Wekopedia</a></li>
+                        <li><a href="#" class="hover:underline">Contact us</a></li>
+                        <li><a href="#" class="hover:underline">Donate</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold text-gray-600 mb-1 border-b border-gray-300 pb-1">Contribute</h3>
+                    <ul class="space-y-1.5 mt-2">
+                        <li><a href="#" class="hover:underline">Help</a></li>
+                        <li><a href="#" class="hover:underline">Learn to edit</a></li>
+                        <li><a href="#" class="hover:underline">Community portal</a></li>
+                        <li><a href="#" class="hover:underline">Recent changes</a></li>
+                        <li><a href="#" class="hover:underline">Upload file</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </aside>
 
-<script>
-  const btn = document.getElementById('angryBtn');
-  const info = document.getElementById('angerInfo');
-  btn.addEventListener('click', () => {
-    info.style.display = info.style.display === 'none' ? 'block' : 'none';
-  });
-</script>
+        <!-- Main Content Area -->
+        <main class="bg-white flex-1 border-l border-gray-300 relative min-w-0">
+            <!-- Article Tabs -->
+            <div class="px-6 md:px-10 pt-4 flex justify-between items-end border-b border-gray-300 bg-[#f6f6f6]">
+                <div class="tabs">
+                    <div class="tab active">Article</div>
+                    <div class="tab">Talk</div>
+                </div>
+                <div class="tabs">
+                    <div class="tab active">Read</div>
+                    <div class="tab">Edit</div>
+                    <div class="tab">View history</div>
+                </div>
+            </div>
+
+            <!-- Article Body -->
+            <div class="p-6 md:p-10 wiki-content">
+                <h1>Wesley</h1>
+                
+                <!-- Infobox -->
+                <table class="infobox">
+                    <tbody>
+                        <tr>
+                            <th colspan="2" class="text-center bg-[#b0c4de] text-lg py-2" style="font-family: 'Linux Libertine', serif;">Wesley</th>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="text-center py-2 bg-white">
+                                <svg width="200" height="200" viewBox="0 0 100 100" class="mx-auto border border-gray-300 bg-gray-100">
+                                    <circle cx="50" cy="40" r="20" fill="#cbd5e1"/>
+                                    <path d="M 20 100 Q 50 50 80 100" fill="#cbd5e1"/>
+                                    <!-- Angry eyes indicator -->
+                                    <path d="M 35 35 L 45 40 M 65 35 L 55 40" stroke="#ef4444" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                                <div class="text-xs mt-1 text-gray-500">Artistic depiction of Wesley entering an enraged state.</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="w-1/3">Known aliases</th>
+                            <td>
+                                <ul class="list-none pl-0">
+                                    <li>wesselsprout</li>
+                                    <li>weko nut</li>
+                                    <li>wekle</li>
+                                    <li>wekopedia</li>
+                                    <li>wetard</li>
+                                    <li>wesley</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Primary trait</th>
+                            <td>Sound-barrier breaking acceleration</td>
+                        </tr>
+                        <tr>
+                            <th>Combat style</th>
+                            <td>High-velocity kinetic striking</td>
+                        </tr>
+                        <tr>
+                            <th>Trigger</th>
+                            <td>Extreme anger / provocation</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p>
+                    <b>Wesley</b> is a highly documented, fast-moving entity known for his extreme physiological changes when subjected to anger. Under normal circumstances, Wesley appears relatively unremarkable; however, when provoked into a state of intense rage, his biological limits shift, allowing him to perform impossible feats of acceleration and violence. 
+                </p>
+
+                <p>
+                    Across various encounters and historical documentation, he has been referred to by a wide array of nicknames, including <b>wesselsprout</b>, <b>weko nut</b>, <b>wekle</b>, <b>wekopedia</b>, <b>wetard</b>, and simply <b>wesley</b>. Due to the rapid and lethal nature of his abilities, extreme caution is advised when engaging with him to avoid triggering an aggressive response.
+                </p>
+
+                <!-- Table of Contents -->
+                <div class="toc">
+                    <div class="toc-title">Contents</div>
+                    <ul>
+                        <li><a href="#Abilities_and_Speed" class="wiki-link">1 Abilities and Speed</a></li>
+                        <li><a href="#Combat_and_Lethality" class="wiki-link">2 Combat and Lethality</a></li>
+                        <li><a href="#Etymology_and_Nicknames" class="wiki-link">3 Etymology and Nicknames</a></li>
+                        <li><a href="#See_also" class="wiki-link">4 See also</a></li>
+                    </ul>
+                </div>
+
+                <h2 id="Abilities_and_Speed">Abilities and Speed</h2>
+                <p>
+                    The defining characteristic of Wesley is his conditional supersonic speed. When he becomes angry, a rapid physiological shift occurs within his central nervous system and muscular structure. This adrenaline-induced transformation allows him to run at speeds that breach the sound barrier (roughly 343 meters per second, or 767 miles per hour). 
+                </p>
+                <p>
+                    Observers have noted that as Wesley accelerates, a visible sonic boom and localized pressure waves often accompany his movement, shattering nearby glass and disrupting local air currents. Once the source of his anger is neutralized or he calms down, his speed reverts to typical human baseline levels.
+                </p>
+
+                <h2 id="Combat_and_Lethality">Combat and Lethality</h2>
+                <p>
+                    Wesley's combat capabilities are directly tied to his momentum. Because he can reach the speed of sound, he is able to attack and kill exceptionally fast. His strikes carry immense kinetic energy; a simple tackle or strike delivered at Mach 1 generates catastrophic force upon impact.
+                </p>
+                <p>
+                    Tactical analyses of his attacks suggest that his reaction times are similarly heightened during his enraged state, making it nearly impossible for an average target to perceive or dodge his assault before it makes lethal contact. Defense strategies entirely revolve around pacification and avoiding the provocation of his anger in the first place.
+                </p>
+
+                <h2 id="Etymology_and_Nicknames">Etymology and Nicknames</h2>
+                <p>
+                    Throughout his existence, communities and researchers have assigned a vast number of monikers to Wesley. The aliases vary from playful to derogatory, often reflecting the observer's relationship or prior encounters with him. The officially recognized catalog of his nicknames includes:
+                </p>
+                <ul class="list-disc pl-6 mb-4">
+                    <li><b>wesley</b> – His baseline, default identifier.</li>
+                    <li><b>wesselsprout</b> – A diminutive or endearing alias.</li>
+                    <li><b>weko nut</b> – A colloquial term often used by those who have witnessed his chaotic bursts of speed.</li>
+                    <li><b>wekle</b> – A shortened, affectionate shorthand.</li>
+                    <li><b>wekopedia</b> – A portmanteau referencing the sheer volume of lore and information surrounding his mythos (and the namesake of this very encyclopedia).</li>
+                    <li><b>wetard</b> – A heavily derogatory and controversial nickname used by his most brazen detractors, usually right before triggering his lethal, supersonic rage.</li>
+                </ul>
+
+                <h2 id="See_also">See also</h2>
+                <ul class="list-disc pl-6 mb-4">
+                    <li><a href="#" class="wiki-link">Sonic boom</a></li>
+                    <li><a href="#" class="wiki-link">Kinetic energy in combat</a></li>
+                    <li><a href="#" class="wiki-link">Anger management</a></li>
+                </ul>
+            </div>
+            
+            <!-- Footer -->
+            <footer class="bg-[#f6f6f6] border-t border-gray-300 p-6 text-xs text-gray-600 mt-10">
+                <p class="mb-2">This page was last edited on 30 June 2026, at 15:50 (UTC).</p>
+                <p class="mb-2">Text is available under the Creative Commons Attribution-ShareAlike License 4.0; additional terms may apply. By using this site, you agree to the Terms of Use and Privacy Policy. Wekopedia® is a registered trademark of the Wekimedia Foundation, Inc., a non-profit organization.</p>
+                <ul class="flex flex-wrap gap-4 mt-4 list-none pl-0">
+                    <li><a href="#" class="wiki-link text-[#0645ad]">Privacy policy</a></li>
+                    <li><a href="#" class="wiki-link text-[#0645ad]">About Wekopedia</a></li>
+                    <li><a href="#" class="wiki-link text-[#0645ad]">Disclaimers</a></li>
+                    <li><a href="#" class="wiki-link text-[#0645ad]">Contact Wekopedia</a></li>
+                    <li><a href="#" class="wiki-link text-[#0645ad]">Mobile view</a></li>
+                </ul>
+            </footer>
+        </main>
+    </div>
+
 </body>
 </html>
