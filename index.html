@@ -170,23 +170,23 @@
             <nav class="space-y-6 text-sm text-[#0645ad]">
                 <div>
                     <ul class="space-y-1.5">
-                        <li><a href="#" class="hover:underline">Main page</a></li>
-                        <li><a href="#" class="hover:underline">Contents</a></li>
-                        <li><a href="#" class="hover:underline">Current events</a></li>
-                        <li><a href="#" class="hover:underline">Random article</a></li>
-                        <li><a href="#" class="hover:underline">About Wekopedia</a></li>
-                        <li><a href="#" class="hover:underline">Contact us</a></li>
-                        <li><a href="#" class="hover:underline">Donate</a></li>
+                        <li><a href="#" onclick="showModal(event, 'Main page', 'Welcome to Wekopedia, the free encyclopedia that anyone can edit (unless Wesley destroys the server first).')" class="hover:underline">Main page</a></li>
+                        <li><a href="#toc-container" class="hover:underline">Contents</a></li>
+                        <li><a href="#" onclick="showModal(event, 'Current events', 'Breaking News: Local man reaches Mach 1.2 after someone called him a \'wetard\'. Extensive property damage reported in the tri-state area.')" class="hover:underline">Current events</a></li>
+                        <li><a href="#" onclick="showModal(event, 'Random article', 'Redirecting to: \'Why you shouldn\'t anger Wesley\' (Wait, every random article redirects here...)')" class="hover:underline">Random article</a></li>
+                        <li><a href="#" onclick="showModal(event, 'About Wekopedia', 'Founded in 2026, Wekopedia is a non-profit organization dedicated entirely to documenting the terrifying speed, lore, and lethality of Wesley.')" class="hover:underline">About Wekopedia</a></li>
+                        <li><a href="#" onclick="showModal(event, 'Contact us', 'Please do not contact us. If Wesley finds out we are tracking him, we are all doomed.')" class="hover:underline">Contact us</a></li>
+                        <li><a href="#" onclick="showModal(event, 'Donate', 'Please donate to our server replacement fund. The kinetic shockwaves from Wesley\'s sprints keep shattering our hard drives.')" class="hover:underline">Donate</a></li>
                     </ul>
                 </div>
                 <div>
                     <h3 class="font-bold text-gray-600 mb-1 border-b border-gray-300 pb-1">Contribute</h3>
                     <ul class="space-y-1.5 mt-2">
-                        <li><a href="#" class="hover:underline">Help</a></li>
-                        <li><a href="#" class="hover:underline">Learn to edit</a></li>
-                        <li><a href="#" class="hover:underline">Community portal</a></li>
-                        <li><a href="#" class="hover:underline">Recent changes</a></li>
-                        <li><a href="#" class="hover:underline">Upload file</a></li>
+                        <li><a href="#" onclick="showModal(event, 'Help', 'There is no help. If you see Wesley running, it is already too late.')" class="hover:underline">Help</a></li>
+                        <li><a href="#" onclick="showModal(event, 'Learn to edit', 'Editing privileges are currently suspended because someone tried to change Wesley\'s primary trait to \'Slow\'. The resulting sonic boom destroyed our headquarters.')" class="hover:underline">Learn to edit</a></li>
+                        <li><a href="#" onclick="showModal(event, 'Community portal', 'Join the survivors community. We meet underground on Tuesdays.')" class="hover:underline">Community portal</a></li>
+                        <li><a href="#" onclick="showModal(event, 'Recent changes', '15:50 - \'Wesley\' page protected from vandalism.\n15:51 - Vandal vaporized by Mach 1 tackle.')" class="hover:underline">Recent changes</a></li>
+                        <li><a href="#" onclick="showModal(event, 'Upload file', 'Upload disabled. Last uploaded file was an audio recording of \'weko nut!\' that shattered monitors across the globe.')" class="hover:underline">Upload file</a></li>
                     </ul>
                 </div>
             </nav>
@@ -219,13 +219,8 @@
                         </tr>
                         <tr>
                             <td colspan="2" class="text-center py-2 bg-white">
-                                <svg width="200" height="200" viewBox="0 0 100 100" class="mx-auto border border-gray-300 bg-gray-100">
-                                    <circle cx="50" cy="40" r="20" fill="#cbd5e1"/>
-                                    <path d="M 20 100 Q 50 50 80 100" fill="#cbd5e1"/>
-                                    <!-- Angry eyes indicator -->
-                                    <path d="M 35 35 L 45 40 M 65 35 L 55 40" stroke="#ef4444" stroke-width="2" stroke-linecap="round"/>
-                                </svg>
-                                <div class="text-xs mt-1 text-gray-500">Artistic depiction of Wesley entering an enraged state.</div>
+                                <img src="https://cdn.discordapp.com/attachments/1331771715000205354/1521607890648043731/Messenger_Kids_creation_46852162.png?ex=6a457347&is=6a4421c7&hm=03f22c387f8bbbd291b4540930b56ee62e4c2d6b750ed6c5180774769446d08f&" alt="Wesley" class="mx-auto border border-gray-300 w-[200px] h-[200px] object-cover object-center bg-gray-100">
+                                <div class="text-xs mt-1 text-gray-500">Photograph of Wesley prior to a supersonic event.</div>
                             </td>
                         </tr>
                         <tr>
@@ -253,6 +248,10 @@
                             <th>Trigger</th>
                             <td>Extreme anger / provocation</td>
                         </tr>
+                        <tr>
+                            <th>Status</th>
+                            <td>At large, currently approaching at Mach 1.5</td>
+                        </tr>
                     </tbody>
                 </table>
 
@@ -265,15 +264,25 @@
                 </p>
 
                 <!-- Table of Contents -->
-                <div class="toc">
+                <div id="toc-container" class="toc">
                     <div class="toc-title">Contents</div>
                     <ul>
-                        <li><a href="#Abilities_and_Speed" class="wiki-link">1 Abilities and Speed</a></li>
-                        <li><a href="#Combat_and_Lethality" class="wiki-link">2 Combat and Lethality</a></li>
-                        <li><a href="#Etymology_and_Nicknames" class="wiki-link">3 Etymology and Nicknames</a></li>
-                        <li><a href="#See_also" class="wiki-link">4 See also</a></li>
+                        <li><a href="#Origins" class="wiki-link">1 Origins</a></li>
+                        <li><a href="#Abilities_and_Speed" class="wiki-link">2 Abilities and Speed</a></li>
+                        <li><a href="#Combat_and_Lethality" class="wiki-link">3 Combat and Lethality</a></li>
+                        <li><a href="#Notable_Incidents" class="wiki-link">4 Notable Incidents</a></li>
+                        <li><a href="#Etymology_and_Nicknames" class="wiki-link">5 Etymology and Nicknames</a></li>
+                        <li><a href="#See_also" class="wiki-link">6 See also</a></li>
                     </ul>
                 </div>
+
+                <h2 id="Origins">Origins</h2>
+                <p>
+                    The exact origins of Wesley remain a highly classified and hotly debated topic among Wekopedia scholars. Early records from late-1990s internet forums suggest he may have been the result of a failed government experiment designed to create the ultimate courier. Others theorize he is a naturally occurring anomaly, born from the collective rage of internet comment sections. 
+                </p>
+                <p>
+                    What is known for certain is that by the early 2010s, localized reports of a blur moving through urban environments and shouting "wekle!" began to surface, cementing his existence in urban legend before formal documentation began.
+                </p>
 
                 <h2 id="Abilities_and_Speed">Abilities and Speed</h2>
                 <p>
@@ -291,6 +300,14 @@
                     Tactical analyses of his attacks suggest that his reaction times are similarly heightened during his enraged state, making it nearly impossible for an average target to perceive or dodge his assault before it makes lethal contact. Defense strategies entirely revolve around pacification and avoiding the provocation of his anger in the first place.
                 </p>
 
+                <h2 id="Notable_Incidents">Notable Incidents</h2>
+                <p>
+                    Several catastrophic events have been directly attributed to Wesley entering a state of rage. The most well-documented is the <b>"Great Server Crash of 2024"</b>. During a livestream, a user repeatedly spammed the phrase "weko nut" in a global chat. Seemingly sensing the provocation across the continent, Wesley accelerated to Mach 2.4, completely vaporizing the data center hosting the chat servers through sheer kinetic friction.
+                </p>
+                <p>
+                    Another infamous event, known simply as the <b>"Wetard Incident,"</b> occurred when a brazen detractor attempted to confront Wesley in an open field using the heavily derogatory nickname. The resulting sonic boom shattered windows in a 15-mile radius, and all that remained of the detractor was a smoking pair of shoes. It is because of this event that the term is strictly forbidden in most jurisdictions.
+                </p>
+
                 <h2 id="Etymology_and_Nicknames">Etymology and Nicknames</h2>
                 <p>
                     Throughout his existence, communities and researchers have assigned a vast number of monikers to Wesley. The aliases vary from playful to derogatory, often reflecting the observer's relationship or prior encounters with him. The officially recognized catalog of his nicknames includes:
@@ -306,9 +323,9 @@
 
                 <h2 id="See_also">See also</h2>
                 <ul class="list-disc pl-6 mb-4">
-                    <li><a href="#" class="wiki-link">Sonic boom</a></li>
-                    <li><a href="#" class="wiki-link">Kinetic energy in combat</a></li>
-                    <li><a href="#" class="wiki-link">Anger management</a></li>
+                    <li><a href="#" onclick="showModal(event, 'Wesley\'s Sonic Boom', 'Unlike a standard aerodynamic sonic boom, Wesley\'s sonic boom is highly localized. Witnesses report that as he breaks the sound barrier, the pressure wave sounds distinctively like someone aggressively yelling \'WEKO NUT!\' at 150 decibels.')" class="wiki-link">Sonic boom</a></li>
+                    <li><a href="#" onclick="showModal(event, 'Wesley\'s Kinetic Combat', 'Because Wesley can reach Mach 1 in seconds when angry, his physical strikes carry catastrophic kinetic energy. His signature \'Wesselsprout Tackle\' transfers millions of joules of energy into a target, usually resulting in instant vaporization of the threat.')" class="wiki-link">Kinetic energy in combat</a></li>
+                    <li><a href="#" onclick="showModal(event, 'Wesley & Anger Management', 'Clinical attempts at anger management for Wesley have a 100% failure (and casualty) rate. Trying to calm down a \'wetard\' episode usually triggers a supersonic attack. The only recommended anger management strategy is immediate evacuation of the blast zone.')" class="wiki-link">Anger management</a></li>
                 </ul>
             </div>
             
@@ -327,5 +344,34 @@
         </main>
     </div>
 
+    <!-- Wesley Info Modal -->
+    <div id="wesleyModal" class="hidden fixed inset-0 bg-black bg-opacity-40 z-50 flex items-center justify-center p-4">
+        <div class="bg-white border border-[#a2a9b1] p-6 max-w-lg w-full shadow-2xl relative">
+            <button onclick="closeModal()" class="absolute top-2 right-4 text-gray-500 hover:text-black font-bold text-2xl cursor-pointer">&times;</button>
+            <h3 id="modalTitle" class="font-serif text-2xl border-b border-[#a2a9b1] pb-2 mb-4 text-[#202122]">Title</h3>
+            <p id="modalContent" class="text-[0.875rem] leading-[1.6] text-[#202122] mb-2">Content</p>
+        </div>
+    </div>
+
+    <script>
+        function showModal(event, title, content) {
+            event.preventDefault(); // Prevent page jump from href="#"
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalContent').innerText = content;
+            document.getElementById('wesleyModal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('wesleyModal').classList.add('hidden');
+        }
+
+        // Close modal if user clicks outside of the box
+        window.onclick = function(event) {
+            const modal = document.getElementById('wesleyModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
 </body>
 </html>
