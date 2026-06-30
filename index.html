@@ -121,6 +121,23 @@
             color: #202122;
             font-weight: bold;
         }
+
+        @keyframes shake {
+            0% { transform: translate(1px, 1px) rotate(0deg); }
+            10% { transform: translate(-1px, -2px) rotate(-1deg); }
+            20% { transform: translate(-3px, 0px) rotate(1deg); }
+            30% { transform: translate(3px, 2px) rotate(0deg); }
+            40% { transform: translate(1px, -1px) rotate(1deg); }
+            50% { transform: translate(-1px, 2px) rotate(-1deg); }
+            60% { transform: translate(-3px, 1px) rotate(0deg); }
+            70% { transform: translate(3px, 1px) rotate(-1deg); }
+            80% { transform: translate(-1px, -1px) rotate(1deg); }
+            90% { transform: translate(1px, 2px) rotate(0deg); }
+            100% { transform: translate(1px, -2px) rotate(-1deg); }
+        }
+        .shake {
+            animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+        }
     </style>
 </head>
 <body class="flex flex-col min-h-screen">
@@ -270,11 +287,21 @@
                         <li><a href="#Origins" class="wiki-link">1 Origins</a></li>
                         <li><a href="#Abilities_and_Speed" class="wiki-link">2 Abilities and Speed</a></li>
                         <li><a href="#Combat_and_Lethality" class="wiki-link">3 Combat and Lethality</a></li>
-                        <li><a href="#Notable_Incidents" class="wiki-link">4 Notable Incidents</a></li>
-                        <li><a href="#Etymology_and_Nicknames" class="wiki-link">5 Etymology and Nicknames</a></li>
-                        <li><a href="#Talk_to_Wesley" class="wiki-link">6 Simulated Interaction Terminal</a></li>
-                        <li><a href="#See_also" class="wiki-link">7 See also</a></li>
+                        <li><a href="#Diet_and_Metabolism" class="wiki-link">4 Diet and Metabolism</a></li>
+                        <li><a href="#Notable_Incidents" class="wiki-link">5 Notable Incidents</a></li>
+                        <li><a href="#Containment_Protocols" class="wiki-link">6 Containment Protocols</a></li>
+                        <li><a href="#Known_Weaknesses" class="wiki-link">7 Known Weaknesses</a></li>
+                        <li><a href="#Cultural_Impact" class="wiki-link">8 Cultural Impact</a></li>
+                        <li><a href="#Etymology_and_Nicknames" class="wiki-link">9 Etymology and Nicknames</a></li>
+                        <li><a href="#Velocity_Simulator" class="wiki-link">10 Velocity Simulator</a></li>
+                        <li><a href="#Talk_to_Wesley" class="wiki-link">11 Simulated Interaction Terminal</a></li>
+                        <li><a href="#See_also" class="wiki-link">12 See also</a></li>
                     </ul>
+                </div>
+
+                <div class="border-l-4 border-[#0645ad] bg-[#f8f9fa] p-4 my-6 italic text-gray-700">
+                    "I just looked at him and said, 'Hey, wetard.' Next thing I knew, my car was flipped, my windows were shattered, and I was holding a steering wheel attached to absolutely nothing." <br>
+                    <span class="text-sm font-bold block mt-2">— Anonymous Survivor, 2025</span>
                 </div>
 
                 <h2 id="Origins">Origins</h2>
@@ -295,10 +322,18 @@
 
                 <h2 id="Combat_and_Lethality">Combat and Lethality</h2>
                 <p>
-                    Wesley's combat capabilities are directly tied to his momentum. Because he can reach the speed of sound, he is able to attack and kill exceptionally fast. His strikes carry immense kinetic energy; a simple tackle or strike delivered at Mach 1 generates catastrophic force upon impact.
+                    Wesley's combat capabilities are directly tied to his momentum. Because he can reach the speed of sound, he is able to attack and kill exceptionally fast. His strikes carry immense kinetic energy; a simple tackle or strike delivered at Mach 1 generates catastrophic force upon impact.<sup><a href="#" class="wiki-link text-xs">[2]</a></sup>
                 </p>
                 <p>
                     Tactical analyses of his attacks suggest that his reaction times are similarly heightened during his enraged state, making it nearly impossible for an average target to perceive or dodge his assault before it makes lethal contact. Defense strategies entirely revolve around pacification and avoiding the provocation of his anger in the first place.
+                </p>
+
+                <h2 id="Diet_and_Metabolism">Diet and Metabolism</h2>
+                <p>
+                    To sustain speeds of Mach 1.5, Wesley requires an astronomical caloric intake. Wekopedia biologists estimate that a single 10-second sprint burns roughly 45,000 calories. Consequently, when not in an active rage state, Wesley is frequently observed consuming massive quantities of carbohydrates and proteins. 
+                </p>
+                <p>
+                    Interrupting his meals is strongly discouraged, as "hangry" Wesley requires significantly less provocation to break the sound barrier. In 2025, a local buffet was entirely leveled simply because they ran out of macaroni and cheese before he could secure a fourth plate.
                 </p>
 
                 <h2 id="Notable_Incidents">Notable Incidents</h2>
@@ -307,6 +342,29 @@
                 </p>
                 <p>
                     Another infamous event, known simply as the <b>"Wetard Incident,"</b> occurred when a brazen detractor attempted to confront Wesley in an open field using the heavily derogatory nickname. The resulting sonic boom shattered windows in a 15-mile radius, and all that remained of the detractor was a smoking pair of shoes. It is because of this event that the term is strictly forbidden in most jurisdictions.
+                </p>
+
+                <h2 id="Containment_Protocols">Containment Protocols</h2>
+                <p>
+                    Currently, no physical containment facility exists that can withstand a direct, sustained kinetic assault from a Mach 1.5 entity. Global task forces have instead shifted to a psychological containment strategy known as <b>Operation: Good Boy</b>. This involves aggressively censoring his trigger words (specifically "wetard") from the internet and broadcasting calming elevator music in areas where he is sighted.
+                </p>
+
+                <h2 id="Known_Weaknesses">Known Weaknesses</h2>
+                <p>
+                    Despite his terrifying kinetic potential, researchers have discovered a few highly specific vulnerabilities that can neutralize Wesley's acceleration:
+                </p>
+                <ul class="list-disc pl-6 mb-4">
+                    <li><b>Lofi Hip Hop:</b> Prolonged exposure to "Lofi Hip Hop Radio - Beats to Relax/Study to" causes an immediate drop in his heart rate, dampening his rage and forcing him back to subsonic speeds.</li>
+                    <li><b>Teflon Coating:</b> Because his speed relies heavily on ground friction, highly slick surfaces (like freshly Zamboni'd ice or floors coated in industrial Teflon) cause him to aggressively spin in place like a cartoon character, entirely negating his forward momentum.</li>
+                    <li><b>Complex CAPTCHAs:</b> Paradoxically, presenting Wesley with a highly complex visual puzzle (e.g., "Select all squares with crosswalks") does not enrage him. Instead, it induces a state of deep, paralyzing confusion, allowing observers time to escape.</li>
+                </ul>
+
+                <h2 id="Cultural_Impact">Cultural Impact</h2>
+                <p>
+                    Wesley's existence has spawned a massive underground following. A prominent fringe group known as <b>The Disciples of the Sprout</b> actively tracks his movements across the globe. Members of the cult often dress in heavily padded aerodynamic suits and intentionally yell "weko nut!" in open fields in a dangerous ritual known as "Chasing the Boom."
+                </p>
+                <p>
+                    Furthermore, his signature supersonic tackle has been parodied in numerous video games, anime, and comic books, where characters achieve incredible power solely by being mildly inconvenienced or insulted.
                 </p>
 
                 <h2 id="Etymology_and_Nicknames">Etymology and Nicknames</h2>
@@ -321,6 +379,35 @@
                     <li><b>wekopedia</b> – A portmanteau referencing the sheer volume of lore and information surrounding his mythos (and the namesake of this very encyclopedia).</li>
                     <li><b>wetard</b> – A heavily derogatory and controversial nickname used by his most brazen detractors, usually right before triggering his lethal, supersonic rage.</li>
                 </ul>
+
+                <h2 id="Velocity_Simulator">Velocity Simulator</h2>
+                <p>
+                    This interactive module demonstrates Wesley's acceleration curve when provoked. Click the button below to initiate a simulated rage event and observe his velocity.
+                </p>
+                <div class="border border-[#a2a9b1] bg-[#f8f9fa] p-4 mt-4 mb-6">
+                    <div id="sim-track" class="w-full h-32 bg-gray-800 relative overflow-hidden border-2 border-gray-600 rounded">
+                        <!-- Track line -->
+                        <div class="absolute top-1/2 w-full border-t-4 border-dashed border-yellow-500 transform -translate-y-1/2 opacity-70"></div>
+                        
+                        <!-- Shockwave effect -->
+                        <div id="shockwave" class="absolute w-32 h-32 border-4 border-blue-400 rounded-full opacity-0 transform scale-0 pointer-events-none -mt-8 -ml-16 z-0"></div>
+                        
+                        <!-- Wesley Sprite -->
+                        <img id="wesley-sprite" src="https://cdn.discordapp.com/attachments/1331771715000205354/1521607890648043731/Messenger_Kids_creation_46852162.png?ex=6a457347&is=6a4421c7&hm=03f22c387f8bbbd291b4540930b56ee62e4c2d6b750ed6c5180774769446d08f&" class="w-12 h-12 rounded-full object-cover absolute top-2 left-4 z-10 border-2 border-red-500 bg-white" alt="Wesley Sprite">
+                        
+                        <!-- User Sprite -->
+                        <div id="user-sprite" class="w-12 h-12 rounded-full bg-blue-500 absolute bottom-2 left-4 z-10 border-2 border-white flex items-center justify-center text-sm text-white font-bold shadow-lg">YOU</div>
+                    </div>
+                    <div class="mt-4 flex justify-between items-center bg-white p-3 border border-gray-300">
+                        <button onclick="runWesleySim()" class="bg-red-600 text-white px-4 py-2 text-sm font-bold hover:bg-red-700 active:bg-red-800 shadow shadow-red-300 transition-colors">
+                            Provoke ("Wetard")
+                        </button>
+                        <div class="font-mono text-right tracking-wider">
+                            <div class="text-xs text-gray-500 font-bold mb-1">YOUR SPEED: <span class="text-blue-600">Mach 0.01</span></div>
+                            <div class="text-xl font-bold">WESLEY: <span id="mach-counter" class="text-red-600">Mach 0.00</span></div>
+                        </div>
+                    </div>
+                </div>
 
                 <h2 id="Talk_to_Wesley">Simulated Interaction Terminal</h2>
                 <p>
@@ -445,6 +532,112 @@
             if (event.target == modal) {
                 closeModal();
             }
+        }
+
+        let simRunning = false;
+        function runWesleySim() {
+            if (simRunning) return;
+            simRunning = true;
+            
+            const sprite = document.getElementById('wesley-sprite');
+            const userSprite = document.getElementById('user-sprite');
+            const counter = document.getElementById('mach-counter');
+            const shockwave = document.getElementById('shockwave');
+            const track = document.getElementById('sim-track');
+            
+            // Reset states
+            sprite.style.transition = 'none';
+            sprite.style.transform = 'translateX(0px)';
+            userSprite.style.transition = 'none';
+            userSprite.style.transform = 'translateX(0px)';
+            shockwave.style.transition = 'none';
+            shockwave.style.opacity = '0';
+            shockwave.style.transform = 'scale(0)';
+            track.classList.remove('shake');
+            counter.innerText = 'Mach 0.00';
+            counter.classList.remove('animate-pulse');
+            
+            // Force a reflow
+            void sprite.offsetWidth;
+            
+            let currentMach = 0;
+            const targetMach = 1.5;
+            const duration = 1500; // 1.5 seconds to cross
+            const startTime = performance.now();
+            
+            // Update the Mach counter with an exponential curve
+            function animateCounter(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                
+                // Exponential ease-in
+                const easeIn = progress === 1 ? 1 : Math.pow(2, 10 * progress - 10);
+                
+                currentMach = (easeIn * targetMach).toFixed(2);
+                counter.innerText = `Mach ${currentMach}`;
+                
+                if (progress < 1) {
+                    requestAnimationFrame(animateCounter);
+                } else {
+                    counter.innerText = 'Mach 1.50+';
+                    counter.classList.add('animate-pulse');
+                }
+            }
+            
+            requestAnimationFrame(animateCounter);
+            
+            // Move Wesley
+            const distance = track.offsetWidth + 100;
+            sprite.style.transition = `transform ${duration}ms cubic-bezier(0.55, 0.085, 0.68, 0.53)`;
+            sprite.style.transform = `translateX(${distance}px)`;
+            
+            // Move User (Barely moving compared to Wesley)
+            userSprite.style.transition = `transform ${duration}ms linear`;
+            userSprite.style.transform = `translateX(15px)`;
+            
+            // Trigger Sonic Boom at ~Mach 1 (around 1000ms mark based on curve)
+            setTimeout(() => {
+                track.classList.add('shake');
+                
+                // Estimate position for shockwave
+                const currentLeft = distance * 0.7; // Approx position when he breaks sound barrier
+                shockwave.style.left = `${currentLeft}px`;
+                shockwave.style.top = '32px'; // Centered on top lane
+                
+                shockwave.style.transition = 'all 0.4s ease-out';
+                shockwave.style.opacity = '1';
+                shockwave.style.transform = 'scale(4)';
+                
+                // Fade shockwave out
+                setTimeout(() => {
+                    shockwave.style.transition = 'opacity 0.3s ease-in';
+                    shockwave.style.opacity = '0';
+                }, 400);
+                
+            }, 1000);
+            
+            // Reset simulation after run
+            setTimeout(() => {
+                simRunning = false;
+                track.classList.remove('shake');
+                
+                // Teleport back invisibly
+                sprite.style.transition = 'none';
+                sprite.style.opacity = '0';
+                sprite.style.transform = 'translateX(0px)';
+                
+                userSprite.style.transition = 'none';
+                userSprite.style.opacity = '0';
+                userSprite.style.transform = 'translateX(0px)';
+                
+                setTimeout(() => {
+                    sprite.style.transition = 'opacity 0.5s ease';
+                    sprite.style.opacity = '1';
+                    userSprite.style.transition = 'opacity 0.5s ease';
+                    userSprite.style.opacity = '1';
+                }, 100);
+                
+            }, duration + 500);
         }
     </script>
 </body>
