@@ -272,7 +272,8 @@
                         <li><a href="#Combat_and_Lethality" class="wiki-link">3 Combat and Lethality</a></li>
                         <li><a href="#Notable_Incidents" class="wiki-link">4 Notable Incidents</a></li>
                         <li><a href="#Etymology_and_Nicknames" class="wiki-link">5 Etymology and Nicknames</a></li>
-                        <li><a href="#See_also" class="wiki-link">6 See also</a></li>
+                        <li><a href="#Talk_to_Wesley" class="wiki-link">6 Simulated Interaction Terminal</a></li>
+                        <li><a href="#See_also" class="wiki-link">7 See also</a></li>
                     </ul>
                 </div>
 
@@ -321,6 +322,20 @@
                     <li><b>wetard</b> – A heavily derogatory and controversial nickname used by his most brazen detractors, usually right before triggering his lethal, supersonic rage.</li>
                 </ul>
 
+                <h2 id="Talk_to_Wesley">Simulated Interaction Terminal</h2>
+                <p>
+                    <b>WARNING:</b> The following interface connects to an AI simulation trained on Wesley's behavioral patterns via the Pollinations API. Engagement is at your own risk. Provoking the simulation may result in highly aggressive, speed-of-sound text-based threats.
+                </p>
+                <div class="border border-[#a2a9b1] bg-[#f8f9fa] p-4 mt-4 mb-6">
+                    <div id="chat-history" class="h-48 overflow-y-auto mb-4 bg-white border border-gray-300 p-3 text-sm font-sans flex flex-col gap-2">
+                        <div class="text-gray-500"><em>Terminal initialized. Simulation running. Say something to Wesley...</em></div>
+                    </div>
+                    <div class="flex gap-2">
+                        <input type="text" id="chat-input" class="flex-1 border border-gray-300 p-2 text-sm focus:outline-none focus:border-[#0645ad]" placeholder="Type your message here..." onkeypress="if(event.key === 'Enter') sendWesleyMessage()">
+                        <button onclick="sendWesleyMessage()" class="bg-[#0645ad] text-white px-4 py-2 text-sm font-bold hover:bg-[#0b0080]">Send</button>
+                    </div>
+                </div>
+
                 <h2 id="See_also">See also</h2>
                 <ul class="list-disc pl-6 mb-4">
                     <li><a href="#" onclick="showModal(event, 'Wesley\'s Sonic Boom', 'Unlike a standard aerodynamic sonic boom, Wesley\'s sonic boom is highly localized. Witnesses report that as he breaks the sound barrier, the pressure wave sounds distinctively like someone aggressively yelling \'WEKO NUT!\' at 150 decibels.')" class="wiki-link">Sonic boom</a></li>
@@ -354,6 +369,65 @@
     </div>
 
     <script>
+        async function sendWesleyMessage() {
+            const input = document.getElementById('chat-input');
+            const message = input.value.trim();
+            if (!message) return;
+
+            const chatHistory = document.getElementById('chat-history');
+            
+            // Add user message
+            const userDiv = document.createElement('div');
+            userDiv.className = 'text-[#202122] bg-gray-100 p-2 rounded self-end max-w-[80%]';
+            userDiv.innerHTML = `<strong>You:</strong> ${escapeHtml(message)}`;
+            chatHistory.appendChild(userDiv);
+            
+            input.value = '';
+
+            // Add loading indicator
+            const loadingId = 'loading-' + Date.now();
+            const loadingDiv = document.createElement('div');
+            loadingDiv.id = loadingId;
+            loadingDiv.className = 'text-gray-500 p-2';
+            loadingDiv.innerHTML = `<em>Wesley is approaching...</em>`;
+            chatHistory.appendChild(loadingDiv);
+            chatHistory.scrollTop = chatHistory.scrollHeight;
+
+            // System prompt to make the AI act like Wesley
+            const systemPrompt = "You are Wesley, a chaotic entity documented on Wekopedia. You have supersonic speed (Mach 1.5) when angry. You are easily provoked. Your aliases include wesselsprout, weko nut, wekle, wekopedia, and wetard. If the user calls you 'wetard' or insults you, you get incredibly furious, threaten a supersonic kinetic attack, and type entirely in all caps. Otherwise, be brief, slightly aggressive, erratic, and mention your speed. Limit responses to 1-3 sentences maximum. The user says: ";
+            const encodedPrompt = encodeURIComponent(systemPrompt + message);
+
+            try {
+                const response = await fetch(`https://text.pollinations.ai/${encodedPrompt}`);
+                const text = await response.text();
+                
+                document.getElementById(loadingId).remove();
+                
+                const wesleyDiv = document.createElement('div');
+                wesleyDiv.className = 'text-red-700 bg-red-50 p-2 border border-red-200 rounded self-start max-w-[90%]';
+                wesleyDiv.innerHTML = `<strong>Wesley:</strong> ${escapeHtml(text)}`;
+                chatHistory.appendChild(wesleyDiv);
+                
+                chatHistory.scrollTop = chatHistory.scrollHeight;
+            } catch (error) {
+                document.getElementById(loadingId).remove();
+                const errDiv = document.createElement('div');
+                errDiv.className = 'text-red-500 font-bold p-2';
+                errDiv.innerHTML = `System Error: Wesley destroyed the connection with a sonic boom.`;
+                chatHistory.appendChild(errDiv);
+            }
+        }
+
+        // Helper to prevent XSS
+        function escapeHtml(unsafe) {
+            return unsafe
+                 .replace(/&/g, "&amp;")
+                 .replace(/</g, "&lt;")
+                 .replace(/>/g, "&gt;")
+                 .replace(/"/g, "&quot;")
+                 .replace(/'/g, "&#039;");
+        }
+
         function showModal(event, title, content) {
             event.preventDefault(); // Prevent page jump from href="#"
             document.getElementById('modalTitle').innerText = title;
